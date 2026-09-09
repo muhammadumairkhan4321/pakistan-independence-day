@@ -1,0 +1,916 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+    background: #02140c;
+
+    color: white;
+}
+
+
+/* =========================================
+   PREMIUM BACKGROUND
+========================================= */
+
+body {
+    background:
+        radial-gradient(
+            circle at 25% 45%,
+            rgba(0, 180, 95, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(0, 255, 130, 0.10),
+            transparent 28%
+        ),
+        linear-gradient(
+            120deg,
+            #01150c 0%,
+            #063c25 48%,
+            #011b10 100%
+        );
+}
+
+
+/* Soft light overlay */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,0.045),
+            transparent 45%
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.particles {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.particles::before,
+.particles::after {
+    content: "";
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        8vw 12vh rgba(255,255,255,.45),
+        18vw 30vh rgba(0,255,140,.55),
+        32vw 70vh rgba(255,255,255,.35),
+        45vw 18vh rgba(0,255,140,.50),
+        58vw 80vh rgba(255,255,255,.35),
+        70vw 22vh rgba(0,255,140,.50),
+        82vw 48vh rgba(255,255,255,.45),
+        94vw 75vh rgba(0,255,140,.40),
+        25vw 90vh rgba(0,255,140,.45),
+        76vw 92vh rgba(255,255,255,.30);
+
+    animation: particlesMove 9s linear infinite;
+}
+
+.particles::after {
+    animation-delay: -4.5s;
+
+    opacity: .45;
+
+    transform: scale(.7);
+}
+
+
+@keyframes particlesMove {
+
+    0% {
+        transform: translateY(30px);
+        opacity: .15;
+    }
+
+    50% {
+        opacity: .9;
+    }
+
+    100% {
+        transform: translateY(-100px);
+        opacity: .1;
+    }
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 3;
+}
+
+
+/* =========================================
+   START SCREEN
+========================================= */
+
+.start-screen {
+    text-align: center;
+
+    animation:
+        startAppear 1.5s ease forwards;
+}
+
+
+.start-screen h1 {
+
+    font-size: clamp(
+        55px,
+        9vw,
+        110px
+    );
+
+    font-weight: 800;
+
+    letter-spacing: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #c9ffe4,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 20px rgba(0,255,130,.22);
+}
+
+
+.start-screen p {
+
+    margin-top: 12px;
+
+    font-size: clamp(
+        15px,
+        2vw,
+        25px
+    );
+
+    font-weight: 500;
+
+    letter-spacing: 8px;
+
+    color: rgba(255,255,255,.75);
+}
+
+
+/* =========================================
+   MINI STAR
+========================================= */
+
+.mini-star {
+
+    font-size: 55px;
+
+    color: white;
+
+    margin-bottom: 18px;
+
+    animation:
+        starPulse 2s infinite ease-in-out;
+
+    text-shadow:
+        0 0 15px white,
+        0 0 35px rgba(255,255,255,.55);
+}
+
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   START BUTTON
+========================================= */
+
+#startButton {
+
+    margin-top: 45px;
+
+    padding: 17px 35px;
+
+    border: 1px solid rgba(255,255,255,.30);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087f48,
+            #02b765
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(0,255,130,.22);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+#startButton span {
+    margin-right: 8px;
+}
+
+
+#startButton:hover {
+
+    transform: translateY(-2px) scale(1.04);
+
+    box-shadow:
+        0 0 35px rgba(0,255,130,.45);
+}
+
+
+/* =========================================
+   CREATOR NAME - START SCREEN
+========================================= */
+
+.made-with {
+
+    margin-top: 35px;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,.45);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   ANIMATION SCREEN
+========================================= */
+
+.animation {
+
+    width: 100%;
+
+    height: 100%;
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================================
+   FLAG AREA
+========================================= */
+
+.flag-container {
+
+    position: absolute;
+
+    left: 8%;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: min(
+        48vw,
+        650px
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   REAL FLAG
+========================================= */
+
+.flag {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    height: auto;
+
+    border-radius: 5px;
+
+    object-fit: contain;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.12),
+        0 0 60px rgba(0,255,120,.18),
+        0 20px 70px rgba(0,0,0,.25);
+
+    animation:
+        flagReveal 2s ease forwards,
+        flagFloat 4s ease-in-out infinite;
+
+    transform-origin: center;
+}
+
+
+/* =========================================
+   FLAG GLOW
+========================================= */
+
+.flag-glow {
+
+    position: absolute;
+
+    width: 75%;
+
+    height: 75%;
+
+    background:
+        rgba(0,255,120,.16);
+
+    filter: blur(75px);
+
+    z-index: -1;
+}
+
+
+@keyframes flagReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-80px)
+            scale(.78);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+
+@keyframes flagFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+/* =========================================
+   MAIN TEXT AREA
+   RIGHT SIDE OF FLAG
+========================================= */
+
+.text {
+
+    position: absolute;
+
+    left: 58%;
+
+    width: 36%;
+
+    text-align: left;
+
+    opacity: 0;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 12px rgba(0,255,130,.30),
+        0 0 35px rgba(0,255,130,.12);
+}
+
+
+/* =========================================
+   14 AUGUST
+========================================= */
+
+.august {
+
+    top: 32%;
+
+    font-size: clamp(
+        35px,
+        5vw,
+        72px
+    );
+
+    color: white;
+
+    animation:
+        augustAppear 11s ease forwards;
+}
+
+
+/* =========================================
+   PAKISTAN
+========================================= */
+
+.pakistan {
+
+    top: 47%;
+
+    font-size: clamp(
+        28px,
+        4vw,
+        52px
+    );
+
+    color: white;
+
+    animation:
+        pakistanAppear 11s ease forwards;
+}
+
+
+/* =========================================
+   ZINDABAD
+========================================= */
+
+.zindabad {
+
+    top: 56%;
+
+    font-size: clamp(
+        28px,
+        4vw,
+        52px
+    );
+
+    color: #00e878;
+
+    animation:
+        zindabadAppear 11s ease forwards;
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.final-message {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 58%;
+
+    transform:
+        translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    font-size: clamp(
+        25px,
+        4vw,
+        50px
+    );
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.35);
+
+    animation:
+        finalAppear 11s ease forwards;
+}
+
+
+.final-message div:last-child {
+
+    color: #00e878;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   CREATOR SIGNATURE
+========================================= */
+
+.code-text {
+
+    position: absolute;
+
+    bottom: 5%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.45);
+
+    opacity: 0;
+
+    animation:
+        codeAppear 11s ease forwards;
+}
+
+
+/* =========================================
+   14 AUGUST ANIMATION
+========================================= */
+
+@keyframes augustAppear {
+
+    0%,
+    25% {
+        opacity: 0;
+
+        transform:
+            translateX(40px)
+            scale(.9);
+    }
+
+    35%,
+    60% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+    70%,
+    100% {
+        opacity: 0;
+
+        transform:
+            translateX(-20px)
+            scale(1.04);
+    }
+}
+
+
+/* =========================================
+   PAKISTAN ANIMATION
+========================================= */
+
+@keyframes pakistanAppear {
+
+    0%,
+    35% {
+        opacity: 0;
+
+        transform:
+            translateX(40px);
+    }
+
+    45%,
+    68% {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+
+    76%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   ZINDABAD ANIMATION
+========================================= */
+
+@keyframes zindabadAppear {
+
+    0%,
+    43% {
+        opacity: 0;
+
+        transform:
+            translateX(40px)
+            scale(.85);
+    }
+
+    52%,
+    75% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+    82%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   FINAL MESSAGE ANIMATION
+========================================= */
+
+@keyframes finalAppear {
+
+    0%,
+    68% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(35px);
+    }
+
+    78%,
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   CREATOR NAME ANIMATION
+========================================= */
+
+@keyframes codeAppear {
+
+    0%,
+    80% {
+        opacity: 0;
+    }
+
+    90%,
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   START SCREEN APPEAR
+========================================= */
+
+@keyframes startAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+
+    .flag-container {
+
+        left: 5%;
+
+        width: 50vw;
+    }
+
+    .text {
+
+        left: 58%;
+
+        width: 38%;
+    }
+
+    .august {
+
+        font-size: clamp(
+            30px,
+            5vw,
+            55px
+        );
+    }
+
+    .pakistan,
+    .zindabad {
+
+        font-size: clamp(
+            24px,
+            4vw,
+            42px
+        );
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .start-screen h1 {
+
+        letter-spacing: 7px;
+    }
+
+    .start-screen p {
+
+        letter-spacing: 4px;
+    }
+
+    .flag-container {
+
+        left: 8%;
+
+        top: 27%;
+
+        width: 84vw;
+
+        transform: none;
+    }
+
+    .text {
+
+        left: 10%;
+
+        width: 80%;
+
+        text-align: center;
+
+        letter-spacing: 4px;
+    }
+
+    .august {
+
+        top: 57%;
+
+        font-size: 38px;
+    }
+
+    .pakistan {
+
+        top: 66%;
+
+        font-size: 30px;
+    }
+
+    .zindabad {
+
+        top: 73%;
+
+        font-size: 30px;
+    }
+
+    .final-message {
+
+        top: 60%;
+
+        font-size: 25px;
+
+        letter-spacing: 3px;
+    }
+
+    .code-text {
+
+        bottom: 4%;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+}
